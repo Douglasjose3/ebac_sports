@@ -1,4 +1,4 @@
-import Produto from '../components/Produto'
+import Produto from '../components/Produtos'
 import { useGetProdutoQuery } from '../services/api'
 import * as S from './styles'
 import { Produto as ProdutoType } from '../App'

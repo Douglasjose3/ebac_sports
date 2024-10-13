@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Provider } from 'react-redux'
 import Header from './components/Header'
-import Produtos from './containers/Produtos'
 import { store } from './store'
-import { Produto } from './components/Produto/types'
+import { Produto } from './components/Produtos/types'
 import { GlobalStyle } from './styles'
+import Produtos from './components/Produtos'
 
 function App() {
   const [favoritos, setFavoritos] = useState([] as Produto[])

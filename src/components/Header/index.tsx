@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux' // Import corrigido
-import Produto, { paraReal } from '../Produto' // Import corrigido
+import Produto, { paraReal } from '../Produtos' // Import corrigido
 import { useGetProdutoQuery } from '../../services/api' // Import corrigido
 import { RootReducer } from '../../store'
 
