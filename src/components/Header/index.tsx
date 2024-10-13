@@ -1,17 +1,19 @@
-import * as S from './styles'
+import React from 'react'
+import { useSelector } from 'react-redux' // Import corrigido
+import Produto, { paraReal } from '../Produto' // Import corrigido
+import { useGetProdutoQuery } from '../../services/api' // Import corrigido
+import { RootReducer } from '../../store'
 
-import { Produto } from '../../App'
+import * as S from './styles' // Import corrigido
 
-import cesta from '../../assets/cesta.png'
-import { paraReal } from '../Produto'
-
-type Props = {
-  itensNoCarrinho: Produto[]
+type Produto = {
   favoritos: Produto[]
 }
 
-const Header = ({ itensNoCarrinho, favoritos }: Props) => {
-  const valorTotal = itensNoCarrinho.reduce((acc, item) => {
+const Header = ({ favoritos }: Produto) => {
+  const itens = useSelector((state: RootReducer) => state.carrinho.itens)
+  const valorTotal = itens.reduce((acc: number, item: { preco: any }) => {
+    acc = typeof acc === 'number' ? acc : 0
     acc += item.preco
     return acc
   }, 0)
@@ -21,9 +23,9 @@ const Header = ({ itensNoCarrinho, favoritos }: Props) => {
       <h1>EBAC Sports</h1>
       <div>
         <span>{favoritos.length} favoritos</span>
-        <img src={cesta} />
+        <img src={require('../../assets/cesta.png').default} alt="cesta" />
         <span>
-          {itensNoCarrinho.length} itens, valor total: {paraReal(valorTotal)}
+          {itens.length} itens, valor total: {paraReal(valorTotal)}
         </span>
       </div>
     </S.Header>
